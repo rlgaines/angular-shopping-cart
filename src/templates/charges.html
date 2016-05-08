@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+  <h3>My Shopping Bag</h3>
+   <table class="checkout table table-bordered">
+    <tr>
+  	  <td>Product</td>
+  	  <td class="charge">Quantity</td>
+  	  <td class="charge">SubTotal</td>
+  	  <td class="chargeButt"><strong ng-model="order">Order Total: {{price | currency}}</strong></td>
+    </tr>
+    <tr ng-repeat="order in orderInfo">
+
+    	<td><h3>{{order.name}}</h3> <img src="{{order.image}}"><h3>Price: {{order.individualPrice | currency}}</h3> <h5>Caffeine Scale: {{order.caffeineScale}}</h5> <h5>Ingredients: {{order.ingredients}}</h5> <h5>Rating: {{order.rating}}</h5></td>
+
+    	<td><span ng-model="order.amount" ng-hide="amountInput">{{order.amount}}</span><input ng-model="order.amount" ng-hide="!amountInput" value="{{order.amount}}"></input></td>
+
+    	<td ng-model="order">{{order.totalPrice | currency}}</td>
+
+    	<td><button ng-hide="!amountInput" type="submit" id="editButton" class="order btn btn-warning" ng-click="amountInput = !amountInput; updatePrice(order.amount, order.totalPrice, order.name); orderTotal(price)">Save</button><button ng-hide="amountInput" type="submit" id="editButton" class="order btn btn-warning" ng-click="amountInput = !amountInput">Edit</button><button type="submit" ng-click="remove(this.order, orderInfo)" class="order btn btn-danger">Remove</button></td>
+    </tr>
+   </table>
+  </div>
+</div>

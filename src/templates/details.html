@@ -1,0 +1,70 @@
+<div class="container">
+ <div class="row">
+  <div class="col-md-9">
+   <div class="container-fluid">
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+        <h5>Search By Title:</h5>
+          <input type="text" class="form-control" placeholder="Search" ng-model="search">
+        </div>
+      </form>
+      <ul class="nav navbar-nav">
+      <h5>Search By Category:</h5>
+       <select class="form-control" id="navDrop" ng-model="sort" ng-init="sort='tea'">
+        <option value="tea">All</option>
+        <option value="categories" ng-repeat="categories in categories" ng-model="sort">{{categories}}</option>
+       </select>    
+      </ul>
+    </div><!-- /.navbar-collapse -->
+   </div><!-- /.container-fluid -->
+  </div>
+  <div class="col-md-3">
+    <a href="#/charges"><button type="submit" id="checkoutButt" ng-click="orderTotal()" class="order btn btn-danger">Checkout | Bag: {{amount}}</button></a>
+  </div>
+ </div>
+</div>
+
+<form novalidate class="simple-form">
+
+<div class="container">
+	<div class="row" ng-repeat="inventory in inventory | orderBy: '-' + sort | filter:search">
+	  <div class="col-md-3">
+	  	<img src="{{inventory.imageUrl}}">
+	  </div>
+		<div class="col-md-4">
+			<h2 ng-model="search">{{ inventory.name }}</h2>
+			<h4 ng-model="price"><strong>Price:</strong> {{inventory.price | currency }}</h4>
+			<h5><strong>Caffine Scale:</strong> {{inventory.caffeineScale}}</h5>
+			<h5><strong>Ingredients:</strong> {{inventory.ingredients}}</h5>
+			<h5><strong>Rating:</strong> {{ inventory.rating }}</h5>
+			<h5><strong>In Stock?</strong> {{ inventory.inStock | inStock }}</h5>
+			<h4 ng-model="sort"><strong>Categories:</strong></h4>
+			<ul>
+				<li ng-repeat="data in inventory.categories">{{data}}</li>
+			</ul>
+		</div>	
+		<div class="col-md-5">
+			<h2 class="order">Quantity:</h2>
+			 <select class="order form-control" id="dropdown" ng-model="amount" ng-init="amount=1">
+       			<option value="1">1</option>
+    			<option value="2">2</option>
+    			<option value="3">3</option>
+    			<option value="4">4</option>
+    			<option value="5">5</option>
+    			<option value="6">6</option>
+    			<option value="7">7</option>
+    			<option value="8">8</option>
+    			<option value="9">9</option>
+    			<option value="10">10</option>
+   	   		 </select> 
+  	         <button type="submit" id="addToCart" ng-click="total(amount, inventory.price); checkOutInfo(inventory.name, inventory.price, inventory.imageUrl, inventory.caffeineScale, inventory.ingredients, inventory.rating, amount)"class="order btn btn-warning">Add To Bag</button>
+  	         {{poopy}}
+  	    </form>
+		</div>	
+	</div>
+</div>
+
