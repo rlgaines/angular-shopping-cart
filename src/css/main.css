@@ -1,0 +1,37 @@
+/* add custom styles */
+.order{
+	float: left;
+}
+
+#dropdown{
+	margin-top: 20px;
+	width: 45px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+#addToCart{
+margin-top: 20px;
+}
+
+#navDrop{
+	margin-top: 18px;
+
+}
+
+#checkoutButt{
+	margin-top: 9px;
+	float: left;
+}
+.checkout{
+	width: 800px;	
+}
+.charge{
+	width: 100px;
+}
+.chargeButt{
+	width: 175px;
+}
+
+#editButton{
+	margin-right: 7px;
+}
