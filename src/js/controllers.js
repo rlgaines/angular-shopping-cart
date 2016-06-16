@@ -31,6 +31,7 @@ app.controller('chargesController', ['$scope', 'ShoppingService', 'chargesServic
 	}
 	//////HERE UPDATING PRICE TOTAL UPDATE ON CHARGE PAGE
 	$scope.orderTotal = function(price){
+		console.log('price:', price, 'order info:', $scope.orderInfo)
 		chargesService.returnNewTotal(price, $scope.orderInfo);	
 	}
 }]);
